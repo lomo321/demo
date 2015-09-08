@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        /*float的值不为none。*/
+        /*overflow的值不为visible。*/
+        /*display的值为table-cell, table-caption, inline-block中的任何一个。*/
+        /*position的值不为relative和static。*/
+        #wrapper {
+            /*border: 1px solid black;*/
+            background-color: antiquewhite;
+            width: 500px;
+            height: 1000px;
+            /*margin: 50px;*/
+            margin-top: 50px;
+        }
+        #wrapper div{
+            width: 100px;
+            height: 100px;
+            margin: 30px 20px;
+            /*border: 1px solid black;*/
+            /*display: inline-block;*/
+            /*float: left;*/
+        }
+        #div1 {
+            margin-top: 50px;
+            background-color: deepskyblue;
+        }
+        #div2 {
+            background-color: brown;
+        }
+
+        .aside{background:#f00;width:170px;float:left;height:300px;}
+        .main{background:#090;height:500px;width: 500px;
+            /*overflow: hidden*/
+        }
+
+        .outer{width:300px;border:1px solid #666;padding:10px;}
+        .innerLeft{height:100px;width:100px;float:left;background:#f00;}
+        .innerRight{height:100px;width:100px;float:right;background:#090;}
+    </style>
+</head>
+<body>
+    <!--垂直方向发生margin折叠-->
+    <div id="wrapper">
+        <div id="div1"></div>
+        <div id="div2"></div>
+    </div>
+
+    <!--很明显，.aside和.mian重叠了。试分析一下，
+    由于两个box都处在同一个BFC中，都是以BFC边界为起点，
+    如果两个box本身都具备BFC的话，会按顺序一个一个排列布局，
+    现在.main并不具备BFC，按照规则2，内部元素都会从左边界开始，
+    除非它本身具备BFC，按上面规则4拥有BFC的元素是不可以跟浮动元素重叠的，
+    所以只要为.mian再创建一个BFC,就可以解决这个重叠的问题。
+    上面已经说过创建BFC的方法，可以根据具体情况选用不同的方法，
+    这里我选用的是加overflow:hidden。-->
+    <div class="aside">
+    </div>
+      <div class="main">
+    </div>
+    <!--根据 CSS2.1 规范第 10.6.3 部分的高度计算规则，在进行普通流中的块级非替换元素的高度计算时，浮动子元素不参与计算。-->
+
+    <!--同时 CSS2.1 规范第10.6.7部分的高度计算规则，在计算生成了 block formatting context 的元素的高度时，其浮动子元素应该参与计算。-->
+
+    <!--所以，触发外部容器BFC，高度将重新计算。比如给outer加上属性overflow:hidden触发其BFC。-->
+    <div class="outer">
+        <div class="innerLeft"></div>
+        <div class="innerRight"></div>
+    </div>
+    </div>
+</body>
+</html>

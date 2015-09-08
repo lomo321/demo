@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            border: 2px solid black;
+        }
+        #father{
+            width: 5000px;
+            height: 5000px;
+            background-color: #00B7FF;
+            position: relative;
+        }
+        #child{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="father">
+        <div id="child"></div>
+    </div>
+</body>
+
+<script >
+    window.onload=function(){
+        console.log("页面(body)宽高"+document.body.clientWidth+';'+document.body.clientHeight);
+        console.log("页面(body)宽高包括边线"+document.body.offsetWidth+';'+document.body.offsetHeight);
+
+        console.log("网页正文宽高"+ document.body.scrollWidth+';'+ document.body.scrollHeight);
+        console.log("网页被卷去宽高"+  document.body.scrollLeft+';'+document.body.scrollTop);
+
+        console.log("浏览器左上角相对于显示器的位置"+window.screenLeft+';'+window.screenTop);
+        console.log("屏幕分辨率的宽高"+window.screen.width+";"+window.screen.height);
+        console.log("屏幕可用工作区高度(除去任务栏)"+window.screen.availWidth+';'+window.screen.availHeight)
+        console.log("视窗高"+document.documentElement.clientHeight);
+        var f = document.getElementById('father');
+        var c = document.getElementById('child');
+        console.log("body元素offset"+ document.body.offsetTop+';'+ document.body.offsetLeft+';'+document.body.offsetHeight+';'+ document.body.offsetWidth)
+        console.log("父元素offset"+ f.offsetTop+';'+ f.offsetLeft+';'+f.offsetHeight+';'+ f.offsetWidth)
+        console.log("子元素offset"+ c.offsetTop+';'+ c.offsetLeft+';'+c.offsetHeight+';'+ c.offsetWidth)
+//        offsetLeft/offsetTop 元素boder外侧，到其offsetparent()的border内侧的偏移量。
+    }
+</script>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+    #head {
+        border: 1px solid green;
+        padding: 5px;
+        position: relative;
+        overflow: hidden;
+    }
+    #logo {
+        float: left;
+        height: 50px;
+        width: 50px;
+        border: 1px solid red;
+    }
+    #username {
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        border: 1px solid black;
+        height: 20px;
+        width: 100px;
+        text-align: right;
+        vertical-align: baseline;
+    }
+    #content {
+        margin: 5px 0;
+        overflow: hidden;
+    }
+    #right {
+        float: right;
+        width: 200px;
+        height: 20px;
+        border: 1px solid red;
+    }
+    #left {
+        /*float: right;*/
+
+
+        padding-right: 220px;
+    }
+    #inside {
+        height: 300px;
+        width: 100%;
+        border: 1px solid blue;
+    }
+    #footer {
+        height: 20px;
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
+</head>
+
+<body>
+    <div id="head">
+        <div id="logo"> Logo </div>
+        <div id="username"> 用户名 </div>
+    </div>
+    <div id="content">
+        <div id="right">aside-固定200px</div>
+        <div id="left"><div id="inside">content-自适应宽度</div></div>
+    </div>
+    <div id="footer">footer</div>
+</body>
+<script>
+    console.log(document.getElementById("logo").style.height);
+</script>
+</html>
